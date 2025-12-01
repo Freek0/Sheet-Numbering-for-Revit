@@ -3,6 +3,8 @@
 ## Description
 Python script for renumbering sheets in Revit with a graphical user interface. Allows selection of sheets, filtering by project section parameter, and setting custom prefix and starting number.
 
+Compatible with ADSK templates (ADSK-шаблоны) from [BIM2B](https://bim2b.ru/product-category/adsk/). The script uses the "ADSK_Штамп Раздел проекта" parameter for filtering sheets by project section.
+
 ## Requirements
 - Autodesk Revit
 - Dynamo for Revit
@@ -30,9 +32,13 @@ Python script for renumbering sheets in Revit with a graphical user interface. A
 - Custom starting number
 - Natural sorting (same as Revit Project Browser)
 
+## Compatibility
+- Compatible with ADSK templates from BIM2B
+- Requires projects using ADSK parameter naming conventions for full functionality
+- More information: https://bim2b.ru/product-category/adsk/
+
 ## Notes
 - Only active (non-placeholder) sheets are displayed
 - Selected sheets are renumbered sequentially starting from the specified number
 - The script preserves sheet selection state when switching filters
-
 
