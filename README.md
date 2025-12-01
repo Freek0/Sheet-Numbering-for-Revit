@@ -10,7 +10,7 @@ Python script for renumbering sheets in Revit with a graphical user interface. A
 
 ## Installation
 1. Open Dynamo in Revit
-2. Load the `хуй_latest.dyn` file
+2. Load the `SheetNumbering.dyn` file
 
 ## Usage
 1. Run the script in Dynamo Player or execute the Python node
@@ -34,4 +34,5 @@ Python script for renumbering sheets in Revit with a graphical user interface. A
 - Only active (non-placeholder) sheets are displayed
 - Selected sheets are renumbered sequentially starting from the specified number
 - The script preserves sheet selection state when switching filters
+
 
