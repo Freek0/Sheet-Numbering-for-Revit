@@ -87,7 +87,10 @@ def get_sheet_parameter_value(sheet, param_name):
     except:
         return ""
 
-# Сохраняем полный список листов для фильтрации
+# Сортируем по номеру листа с использованием естественной сортировки
+sheets_list.sort(key=lambda x: natural_sort_key(x.SheetNumber))
+
+# Сохраняем полный отсортированный список листов для фильтрации
 all_sheets_list = list(sheets_list)
 
 # Получаем уникальные значения параметра "ADSK_Штамп Раздел проекта"
@@ -104,9 +107,6 @@ for sheet in all_sheets_list:
 parameter_values_list = sorted(list(parameter_values))
 if has_empty_values:
     parameter_values_list.append("(Без значения)")
-
-# Сортируем по номеру листа с использованием естественной сортировки
-sheets_list.sort(key=lambda x: natural_sort_key(x.SheetNumber))
 
 if len(sheets_list) == 0:
     OUT = "Ошибка: В документе нет листов для нумерации"
@@ -256,7 +256,7 @@ else:
             
             # Если выбрано "Все", показываем все листы
             if selected_value == "Все":
-                filtered_sheets = all_sheets_list
+                filtered_sheets = list(all_sheets_list)  # Создаем копию отсортированного списка
             elif selected_value == "(Без значения)":
                 # Показываем листы без значения параметра
                 filtered_sheets = []
@@ -265,6 +265,8 @@ else:
                     param_str = str(param_value) if param_value else ""
                     if not param_str.strip():
                         filtered_sheets.append(sheet)
+                # Сортируем отфильтрованный список
+                filtered_sheets.sort(key=lambda x: natural_sort_key(x.SheetNumber))
             else:
                 # Фильтруем по значению параметра
                 filtered_sheets = []
